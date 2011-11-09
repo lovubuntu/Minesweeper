@@ -8,15 +8,15 @@ void fill_Board()
 //Sets the rows to '?'
 	for(int i = 0; i <= 9; i++)
 	{
-		fill_Columns();
+		fill_Columns(i);
 	}
 }
-void fill_Columns()
+void fill_Columns(int row)
 {
 //Sets the columns to '?'
 	for(int j = 0;j <= 9; j++)
 	{
-		result[i][j] = '?';
+		result[row][j] = '?';
 	}
 }
 void disp_Neighbours(int row,int col,Cell elements)
@@ -48,21 +48,21 @@ void set_Result_Cell(int row,int col,int cell_value)
 {
 	if(cell_value != 9)
 	{
-		result[row][col] = (char)cell_value;
+		result[row][col] = Character.forDigit(cell_value, 10); 
 	}
 }
-void disp_board()
+void disp_Board()
 {
 	for(int i = 0; i <= 9; i++)
 	{
-		get_Columns();
+		get_Columns(i);
 	}
 }
-void get_Columns()
+void get_Columns(int row)
 {
 	for(int j = 0;j <= 9; j++)
 	{
-		System.out.print(result[i][j]+" ");
+		System.out.print(result[row][j]+" ");
 	}
 	System.out.println();
 }
