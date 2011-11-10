@@ -23,7 +23,7 @@ class Game
 			col = get_User_Val(br);
 
 			bomb.check_Mine(row,col,box);
-			play.disp_Neighbours(row,col,box);			
+			play.get_Cell_Value_To_Board(row,col,box);			
 			play.disp_Board();
 			play.count_Unopened_Cells();
 		}while(true);		
