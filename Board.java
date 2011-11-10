@@ -66,4 +66,36 @@ void get_Columns(int row)
 	}
 	System.out.println();
 }
+void count_Unopened_Cells()
+{
+	int ucells_count = 0;
+	for(int i=0;i<10;i++)
+	{
+		ucells_count = count_Unopened_Cols(i,ucells_count);
+	}
+
+
+	if(ucells_count == 10)
+	{
+		System.out.println("Congratulations\n You Won");
+		System.exit(0);
+	}
+}
+int count_Unopened_Cols(int row,int ucells_count)
+{	
+	for(int col = 0; col <10; col++)
+	{
+		ucells_count = check_Unopened_cell(row,col,ucells_count);
+	}
+	return ucells_count;
+}
+int check_Unopened_cell(int row,int col,int ucells_count)
+{
+	char unopened = '?';
+	if(result[row][col] == unopened)
+	{
+		ucells_count++;
+	}
+	return ucells_count;
+}
 }
