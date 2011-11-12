@@ -5,7 +5,7 @@ class Game
 	public static void main(String arg[]) throws IOException
 	{	
 		
-		int row,col,test=10;
+		int row,col;
 		Cell  box  = new Cell();
 		Board play = new Board();
 		Mine  bomb = new Mine();
@@ -15,7 +15,6 @@ class Game
 		box.test();
 		play.fill_Board();
 		play.disp_Board();
-		String flag = "Lost",match;
 		do{			
 			System.out.println("Enter the Row No:(From 0 to 9)")	;
 			row = get_User_Val(br);

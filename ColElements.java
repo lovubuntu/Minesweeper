@@ -2,26 +2,23 @@ package minesweeper;
 class ColElements
 {
 private int cmin,cmax;
-	int get_Cmin()
+	public int get_Cmin()
 	{
 		return cmin;
 	}
-	void set_Cmin_Cmax(int col)
+	public void set_Cmin_Cmax(int col)
 	{
-		if(col > 0)
+		if(col > 0 && col < 9)
 		{
 			cmin = col-1;
-		}		
-		if (col < 9 )
-		{
 			cmax = col + 1;
-		}
+		}		
 	}
-	int get_Cmax()
+	public int get_Cmax()
 	{
 		return cmax;
 	}	
-	void check_First_Col(int col)
+	public void check_First_Col(int col)
 	{
 		if(col == 0)
 		{
@@ -29,7 +26,7 @@ private int cmin,cmax;
 			cmax = col + 1;
 		}
 	}
-	void check_Last_Col(int col)
+	public void check_Last_Col(int col)
 	{
 		if(col == 9)
 		{
