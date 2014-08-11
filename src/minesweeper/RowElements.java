@@ -1,5 +1,6 @@
 package minesweeper;
-class RowElements
+
+public class RowElements
 {
 	private int rmin,rmax;
 	public int get_Rmin()

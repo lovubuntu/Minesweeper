@@ -1,5 +1,6 @@
 package minesweeper;
-class ColElements
+
+public class ColElements
 {
 private int cmin,cmax;
 	public int get_Cmin()

@@ -1,8 +1,8 @@
 package minesweeper;
-class Board
+public class Board
 {
 private char[][] result;
-Board()
+public Board()
 {
     result = new char[10][10];
 }

@@ -3,7 +3,9 @@
  * and open the template in the editor.
  */
 
-package minesweeper;
+package test;
+
+import minesweeper.Cell;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;

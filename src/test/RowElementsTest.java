@@ -3,7 +3,9 @@
  * and open the template in the editor.
  */
 
-package minesweeper;
+package test;
+
+import minesweeper.RowElements;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
