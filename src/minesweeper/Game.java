@@ -6,15 +6,15 @@ class Game
 	{	
 		
 		int row,col;
-		Cell  box  = new Cell();
+		Cells  box  = new Cells();
 		Board play = new Board();
-		Mine  bomb = new Mine();
+		MineChecker  bomb = new MineChecker();
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-		box.fill_Cells();
+		box.fillCells();
 		box.test();
-		play.fill_Board();
-		play.disp_Board();
+		play.fillBoard();
+		play.display();
 		do{			
 			System.out.println("Enter the Row No:(From 0 to 9)")	;
 			row = get_User_Val(br);
@@ -22,9 +22,9 @@ class Game
 			col = get_User_Val(br);
 
 			bomb.check_Mine(row,col,box);
-			play.get_Cell_Value_To_Board(row,col,box);			
-			play.disp_Board();
-			play.count_Unopened_Cells();
+			play.assignValueOfCellAt(row,col,box);			
+			play.display();
+			play.calculateUnopenedCellsCount();
 		}while(true);		
 	}
 	static int get_User_Val(BufferedReader br) throws IOException

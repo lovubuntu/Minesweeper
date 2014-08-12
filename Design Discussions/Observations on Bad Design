@@ -1,0 +1,129 @@
+Bad:
+I am going to list out the bad i found in the Minesweeper game design.
+
+
+I list out class wise.
+
+Game:
+=======
+
+Observation #1
+-----------------
+Game is creating Cell,Board, Mine.
+
+Opinion:
+Game should have a person to create them and give it to him. For instance. Game can have a Preparer do this setting up job.
+
+
+Observation #2
+-----------------
+the method get_User_Val(BufferedReader) is public. 
+
+Opinion:
+The above method can be private since it is only called by self.
+Also BufferedReader is passed to the method. It can access a instance variable directly instead of every time passing the reference to it.
+
+
+Cell:
+=======
+
+Observation #1
+-----------------
+Cell , the name itself has a mistake.
+
+Opinion:
+Cell contains an 2D array of integer. in real cell should have only one value at any point of time. so the class name should be Cells.
+
+Observation #2
+-----------------
+fill_Cells(). this method name is not correct.
+
+Opinion:
+fill_cells() message on Cells is reiterating the same thing. It can be just fill()
+
+
+Observation #3
+-----------------
+The below methods are public
+check_Mine_If_Not_Place_One(int row,int col,int total_mines)
+count_Adjacent_Mines(int row,int col)
+set_Local_Mines_Count(int row,int col)
+set_Mine_Count(int row,int col)
+
+Opinion:
+The above methods can be private since it is only called by self.
+
+
+Observation #4
+-----------------
+return_Total_Mines() method name is not adhering Java naming convention.
+
+Opinion:
+getTotalMineCount() should be the name.
+
+Observation #5
+-----------------
+test() method should not be mingled with the development code. 
+
+Opinion:
+it should be display the cells. so the method can be display()
+
+Observation #6
+-----------------
+RowElements and ColElements is local variables
+
+Opinion:
+They can be instance Variables.
+
+Observation #7
+-----------------
+Cells has extra responsiblity of calculating the value for each cell which should be encapsulated from it. 
+
+Opinion:
+There should be a separate class for holding the each cell values. It can be Cell.
+
+
+RowElements / ColElements
+=========================
+Observation #1
+-----------------
+set_Rmin_Rmax(int row)
+check_First_Row(int row)
+check_Last_Row(int row)
+
+These three methods are together doing only one functionality. Setting the boundaries i.e min and max of a row
+
+
+Opinion:
+only set_Rmin_Rmax(int row) method can be public. other two can be private logics
+
+Observation #2
+-----------------
+RowElements term is not descriptive to that functionality. 
+
+
+Opinion:
+It can be renamed to NegihboursRowIteratorProperties
+
+
+Mine
+======
+Observation #1
+-----------------
+Mine Checks for whether a particular cell is Mine. 
+
+Opinion:
+So it should be probably a MineChecker.
+
+Observation #2
+-----------------
+System.exit(0) is used for termination of the game - it is used in class Mine (which is a Game class responsibility).
+
+Opinion:
+Mine should have a behaviour which return boolean on checking a cell for mine or not.
+
+
+Common:
+=======
+
+1. Names of methods and member variables are not adhered to the java naming conventions.

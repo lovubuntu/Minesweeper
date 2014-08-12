@@ -39,8 +39,8 @@ public class BoardTest {
 		int ucells_count = 0;
 		int expResult = 10;
 		Board instance = new Board();
-		instance.fill_Board();
-		int result = instance.count_Unopened_Cols(row, ucells_count);
+		instance.fillBoard();
+		int result = instance.countUnopenedCols(row, ucells_count);
 		assertEquals(expResult, result);
 	}
 
@@ -54,9 +54,9 @@ public class BoardTest {
 		int col = 0;
 		int ucells_count = 0;
 		Board instance = new Board();
-		instance.fill_Board();
+		instance.fillBoard();
 		int expResult = 1;
-		int result = instance.check_Unopened_cell(row, col, ucells_count);
+		int result = instance.checkUnopenedCell(row, col, ucells_count);
 		assertEquals(expResult, result);
 	}
 
