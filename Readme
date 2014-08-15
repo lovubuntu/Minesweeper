@@ -1,1 +1,15 @@
 This is a project which portrays minesweeper game as a console application.
+
+Use case:
+1. Game is filling the cell
+2. Cell has 2D int array for storing the cell values
+3. Cell has a random algorithm for populating the values in 2D int array. Each time when there is a mine (value 9 is mine) is assigned, the neighbour cell values are incremented by 1.
+4. For finding the neighbours, Cell uses RowElements and ColElements.
+5. Once Cell completes filling the 2D int array, Games fills the Board.
+6. Board has 2D char array. Initially all the elements in 2D char array is assigned the char '?' 
+7. User opens one element in the board by giving row number and column number to Game
+8. Game checks the given row and column contains any mine value in Cell by using Mine. If it is mine value. Mine exiting the system by printing "Sorry you stepped on the mine".
+9. If the given row and column does not contain mine value, then the Game asks Board to display that value. Board gets the cell value from Cell.
+10. After assigning the value to opened element, Board is displayed in console
+11. Then Board counts unopened cell , if unopened cell count is matched with the mine count (its hardcoded to 10). then board exiting the system by printing "Congratulations You Won"
+12. Repeat the steps 7 - 11 
