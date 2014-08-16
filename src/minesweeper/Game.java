@@ -4,7 +4,7 @@ import java.io.*;
 
 class Game {
 	// total mine count should be determined by the Game
-	private final int totalMineCount = 10;
+	private static final int totalMineCount = 10;
 
 	public static void main(String arg[]) throws IOException {
 
@@ -27,7 +27,13 @@ class Game {
 			bomb.check_Mine(row, col, box);
 			play.assignValueOfCellAt(row, col, box);
 			play.display();
-			play.calculateUnopenedCellsCount();
+
+			// Board should not decide winning of Game. It should be in Game
+			if (play.getUnopenedCellsCount() == totalMineCount) {
+				System.out.println("Congratulations\n You Won");
+				System.exit(0);
+			}
+
 		} while (true);
 	}
 
