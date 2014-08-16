@@ -11,7 +11,7 @@ class Game {
 		int row, col;
 		Cells cells = new Cells();
 		Board board = new Board();
-		MineChecker bomb = new MineChecker();
+		// MineChecker bomb = new MineChecker(); // deleted the class
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
 		cells.fillCells();
@@ -24,7 +24,18 @@ class Game {
 			System.out.println("Enter the Col No:(From 0 to 9)");
 			col = getUserVal(br);
 
-			bomb.checkMine(row, col, cells);
+			// checking a cell is mine or not Game resp. checking a cell is mine
+			// is a resp of Cell.
+			// and finding a cell using Row,Column is a resp of cells.
+			// cells are a data of Cells class. it should not be accessed in
+			// MineChecker. Mine checker is not needed.
+
+			if (cells.hasMineAt(row, col)) {
+				System.out
+						.println("Sorry..You stepped on a MineChecker...\nGame Over");
+				System.exit(0);
+			}
+			// bomb.checkMine(row, col, cells);
 			board.open(row, col, cells);
 			board.display();
 

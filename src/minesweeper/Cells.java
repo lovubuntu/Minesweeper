@@ -92,4 +92,8 @@ public class Cells {
 			System.out.println();
 		}
 	}
+
+	public boolean hasMineAt(int row, int col) {
+		return cells[row][col].isMine();
+	}
 }
