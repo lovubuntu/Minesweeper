@@ -56,30 +56,4 @@ public class RowElementsTest {
 
 	}
 
-	/**
-	 * Test of check_First_Row method, of class RowProperties.
-	 */
-	@Test
-	public void testCheck_First_Row() {
-		System.out.println("Checks 1st 2 rows are acted on selecting 1st row");
-		int row = 0;
-		RowProperties instance = new RowProperties(3);
-		instance.check_First_Row(row);
-		assertEquals(0, instance.get_Rmin());
-		assertEquals(1, instance.get_Rmax());
-	}
-
-	/**
-	 * Test of check_Last_Row method, of class RowProperties.
-	 */
-	@Test
-	public void testCheck_Last_Row() {
-		System.out.println("Checks last 2 rows are acted on selecting 2nd row");
-		int row = 2;
-		RowProperties instance = new RowProperties(3);
-		instance.check_Last_Row(row);
-		assertEquals(1, instance.get_Rmin());
-		assertEquals(2, instance.get_Rmax());
-	}
-
 }

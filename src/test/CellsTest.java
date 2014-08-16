@@ -31,7 +31,7 @@ public class CellsTest {
 	 */
 	@Test
 	public void test_Fill_Cells_PopulatesMinesAndOtherCells() {
-		Cells instance = new Cells();
+		Cells instance = new Cells(10);
 		System.out.println("Checks whether total no. mines is 10");
 		assertEquals(10, instance.getTotalMinesCount());
 		System.out
@@ -50,7 +50,7 @@ public class CellsTest {
 		int col = 0;
 		int total_mines = 0;
 		int row_col;
-		Cells instance = new Cells();
+		Cells instance = new Cells(10);
 		while (total_mines > 0) {
 			row_col = (int) (Math.random() * 99);
 			row = (int) row_col / 10;
@@ -71,14 +71,14 @@ public class CellsTest {
 		int row = 0;
 		int col = 0;
 		int mine_count = 0;
-		Cells instance = new Cells();
+		Cells instance = new Cells(10);
 		instance.setMineCount(row, col);
 		assertEquals(mine_count + 1, instance.getCellAt(row, col).getValue());
 	}
 
 	@Test
 	public void testGetUnopenedCellsCount() {
-		Cells cells = new Cells();
+		Cells cells = new Cells(10);
 		assertEquals(100, cells.getUnopenedCellsCount());
 		cells.open(0, 0);
 		cells.open(1, 1);

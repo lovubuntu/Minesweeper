@@ -10,7 +10,7 @@ class Game {
 
 		int row, col;
 		
-		Cells cells = new Cells();
+		Cells cells = new Cells(10);
 		// Board board = new Board();
 		// MineChecker bomb = new MineChecker(); // deleted the class
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));

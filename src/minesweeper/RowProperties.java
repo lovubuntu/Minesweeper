@@ -30,14 +30,14 @@ public class RowProperties {
 		return rmax;
 	}
 
-	public void check_First_Row(int row) {
+	private void check_First_Row(int row) {
 		if (row == 0) {
 			rmin = row;
 			rmax = row + 1;
 		}
 	}
 
-	public void check_Last_Row(int row) {
+	private void check_Last_Row(int row) {
 		if (row == getSize() - 1) {
 			rmin = row - 1;
 			rmax = row;

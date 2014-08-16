@@ -30,14 +30,14 @@ public class ColumnProperties {
 		return columnMax;
 	}
 
-	public void checkFirstColumn(int column) {
+	private void checkFirstColumn(int column) {
 		if (column == 0) {
 			columnMin = column;
 			columnMax = column + 1;
 		}
 	}
 
-	public void checkLastColumn(int column) {
+	private void checkLastColumn(int column) {
 		if (column == getSize() - 1) {
 			columnMin = column - 1;
 			columnMax = column;

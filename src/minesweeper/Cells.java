@@ -10,19 +10,21 @@ package minesweeper;
  * Make replace all loop termination condition with getSize()
  * */
 public class Cells {
-	private int size = 3;
+	private int size;
 
 	private int getSize() {
 		return size;
 	}
 
-	private Cell[][] cells = new Cell[getSize()][getSize()];
+	private Cell[][] cells;
 
 	// total Mine count decided by Game. So remove from Cells
 	private int totalMines = 10;
 
-	public Cells() {
+	public Cells(int size) {
 		// first need to initialise all the Cell objects in Cells
+		this.size = size;
+		totalMines = size;
 		initialiseCells();
 	}
 
@@ -39,6 +41,7 @@ public class Cells {
 	}
 
 	private void initialiseCells() {
+		cells = new Cell[getSize()][getSize()];
 		for (int row = 0; row < getSize(); row++) {
 			for (int column = 0; column < getSize(); column++) {
 				cells[row][column] = new Cell();
@@ -60,9 +63,6 @@ public class Cells {
 	public void countAdjacentMines(int row, int col) {
 		RowProperties rowelt = new RowProperties(getSize());
 		rowelt.set_Rmin_Rmax(row);
-		rowelt.check_First_Row(row);
-
-		rowelt.check_Last_Row(row);
 		/* Reaches the Row level for the generated MineChecker */
 		for (int i = rowelt.get_Rmin(); i <= rowelt.get_Rmax(); i++) {
 			setLocalMinesCount(i, col);
@@ -72,8 +72,6 @@ public class Cells {
 	public void setLocalMinesCount(int row, int col) {
 		ColumnProperties colelt = new ColumnProperties(getSize());
 		colelt.setColumnMinAndMax(col);
-		colelt.checkFirstColumn(col);
-		colelt.checkLastColumn(col);
 		/* Goes upto Column level for each row getting passed */
 		for (int j = colelt.getColumnMin(); j <= colelt.getColumnMax(); j++) {
 			setMineCount(row, j);
