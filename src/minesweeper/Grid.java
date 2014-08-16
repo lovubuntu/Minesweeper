@@ -102,12 +102,18 @@ public class Grid {
 		}
 	}
 
-	public boolean hasMineAt(int row, int col) {
+	private boolean hasMineAt(int row, int col) {
 		return cells[row][col].isMine();
 	}
 
-	public void open(int row, int col) {
+	// open method can return something to Game whether it is opened cell is
+	// mine or not.
+	// from Game , open is not changing the status of its memeber variable. It
+	// is affecting
+	// the status of distant object(Cell) state
+	public boolean open(int row, int col) {
 		cells[row][col].open();
+		return !hasMineAt(row, col);
 	}
 
 	public int getUnopenedCellsCount() {

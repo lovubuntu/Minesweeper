@@ -9,7 +9,7 @@ class Game {
 	public static void main(String arg[]) throws IOException {
 
 		int row, col;
-		
+
 		Grid grid = new Grid(10);
 		// Board board = new Board();
 		// MineChecker bomb = new MineChecker(); // deleted the class
@@ -31,7 +31,13 @@ class Game {
 			// cells are a data of Grid class. it should not be accessed in
 			// MineChecker. Mine checker is not needed.
 
-			if (grid.hasMineAt(row, col)) {
+			if (grid.open(row, col)) {
+				grid.display();
+				if (grid.getUnopenedCellsCount() == totalMineCount) {
+					System.out.println("Congratulations\n You Won");
+					System.exit(0);
+				}
+			} else {
 				System.out
 						.println("Sorry..You stepped on a MineChecker...\nGame Over");
 				System.exit(0);
@@ -43,14 +49,9 @@ class Game {
 			 * 
 			 * This step makes the Board unused Class. remove Board
 			 */
-			grid.open(row, col);
-			grid.display();
+			// grid.open(row, col);
 
 			// Board should not decide winning of Game. It should be in Game
-			if (grid.getUnopenedCellsCount() == totalMineCount) {
-				System.out.println("Congratulations\n You Won");
-				System.exit(0);
-			}
 
 		} while (true);
 	}
