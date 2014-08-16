@@ -1,6 +1,6 @@
 package minesweeper;
 
-public class RowProperties {
+public class NeighbourRowsCalculator {
 	private int rmin, rmax;
 
 	private int size;
@@ -9,7 +9,7 @@ public class RowProperties {
 		return size;
 	}
 
-	public RowProperties(int size) {
+	public NeighbourRowsCalculator(int size) {
 		this.size = size;
 	}
 

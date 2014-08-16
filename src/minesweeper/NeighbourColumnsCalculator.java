@@ -1,9 +1,9 @@
 package minesweeper;
 
-public class ColumnProperties {
+public class NeighbourColumnsCalculator {
 	private int size;
 
-	public ColumnProperties(int size) {
+	public NeighbourColumnsCalculator(int size) {
 		this.size = size;
 	}
 

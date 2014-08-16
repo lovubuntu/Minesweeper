@@ -39,7 +39,7 @@ public class RandomGridFiller implements CellsValuePopulator {
 	}
 
 	private void countAdjacentMines(int row, int col) {
-		RowProperties rowelt = new RowProperties(getSize());
+		NeighbourRowsCalculator rowelt = new NeighbourRowsCalculator(getSize());
 		rowelt.set_Rmin_Rmax(row);
 		/* Reaches the Row level for the generated MineChecker */
 		for (int i = rowelt.get_Rmin(); i <= rowelt.get_Rmax(); i++) {
@@ -48,7 +48,7 @@ public class RandomGridFiller implements CellsValuePopulator {
 	}
 
 	private void setLocalMinesCount(int row, int col) {
-		ColumnProperties colelt = new ColumnProperties(getSize());
+		NeighbourColumnsCalculator colelt = new NeighbourColumnsCalculator(getSize());
 		colelt.setColumnMinAndMax(col);
 		/* Goes upto Column level for each row getting passed */
 		for (int j = colelt.getColumnMin(); j <= colelt.getColumnMax(); j++) {
