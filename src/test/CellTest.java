@@ -20,9 +20,9 @@ public class CellTest {
 	@Test
 	public void testIsMine() {
 		Cell cell = new Cell();
-		cell.setValue(1);
+		cell.setNeighbourMinesCount(1);
 		Assert.assertEquals(false, cell.isMine());
-		cell.setValue(Cell.MINE_VALUE);
+		cell.setNeighbourMinesCount(Cell.MINE_VALUE);
 		Assert.assertEquals(true, cell.isMine());
 
 	}

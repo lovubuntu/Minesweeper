@@ -12,7 +12,7 @@ public class Cell {
 		return value;
 	}
 
-	public void setValue(int value) {
+	public void setNeighbourMinesCount(int value) {
 		this.value = value;
 	}
 

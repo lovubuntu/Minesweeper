@@ -12,12 +12,12 @@ class Game {
 		// TODO Auto-generated constructor stub
 		int row, col;
 
-		Grid grid = new Grid(10);
+		Grid grid = new Grid(10, new RandomGridFiller());
 		// Board board = new Board();
 		// MineChecker bomb = new MineChecker(); // deleted the class
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
-		grid.fillCells();
+		
+		// grid.fill();
 		grid.test();
 		// board.fillBoard();
 		grid.display();

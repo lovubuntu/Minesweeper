@@ -21,23 +21,12 @@ public class Grid {
 	// total Mine count decided by Game. So remove from Grid
 	private int totalMines = 10;
 
-	public Grid(int size) {
+	public Grid(int size, CellsValuePopulator cellsValuePopulator) {
 		// first need to initialise all the Cell objects in Grid
 		this.size = size;
 		totalMines = size;
 		initialiseCells();
-	}
-
-	public void fillCells() {
-		int rowCol, row, col;
-
-		while (totalMines > 0) {
-			int sizeSquare = getSize() * getSize();
-			rowCol = (int) (Math.random() * (sizeSquare - 1));
-			row = (int) rowCol / getSize();
-			col = rowCol % getSize();
-			totalMines = checkMineIfNotPlaceOne(row, col, totalMines);
-		}
+		cellsValuePopulator.populate(cells, totalMines);
 	}
 
 	private void initialiseCells() {
@@ -51,47 +40,9 @@ public class Grid {
 
 	}
 
-	public int checkMineIfNotPlaceOne(int row, int col, int total_mines) {
-		if (!cells[row][col].isMine()) {
-			cells[row][col].setValue(Cell.MINE_VALUE);
-			countAdjacentMines(row, col);
-			total_mines = total_mines - 1;
-		}
-		return total_mines;
-	}
-
-	public void countAdjacentMines(int row, int col) {
-		RowProperties rowelt = new RowProperties(getSize());
-		rowelt.set_Rmin_Rmax(row);
-		/* Reaches the Row level for the generated MineChecker */
-		for (int i = rowelt.get_Rmin(); i <= rowelt.get_Rmax(); i++) {
-			setLocalMinesCount(i, col);
-		}
-	}
-
-	public void setLocalMinesCount(int row, int col) {
-		ColumnProperties colelt = new ColumnProperties(getSize());
-		colelt.setColumnMinAndMax(col);
-		/* Goes upto Column level for each row getting passed */
-		for (int j = colelt.getColumnMin(); j <= colelt.getColumnMax(); j++) {
-			setMineCount(row, j);
-		}
-	}
-
-	public void setMineCount(int row, int col) {
-		/* Increments Count if it is not MineChecker */
-		if (!cells[row][col].isMine()) {
-			cells[row][col].setValue(cells[row][col].getValue() + 1);
-		}
-	}
-
 	public Cell getCellAt(int row, int col) {
 		/* Returns the Grid Value */
 		return cells[row][col];
-	}
-
-	public int getTotalMinesCount() {
-		return totalMines;
 	}
 
 	public void test() {
