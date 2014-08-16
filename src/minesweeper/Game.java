@@ -5,9 +5,11 @@ import java.io.*;
 class Game {
 	// total mine count should be determined by the Game
 	private static final int totalMineCount = 10;
+	boolean allMinesIdentified = false;
+	boolean openedMine = false;
 
-	public static void main(String arg[]) throws IOException {
-
+	public Game() throws IOException {
+		// TODO Auto-generated constructor stub
 		int row, col;
 
 		Grid grid = new Grid(10);
@@ -34,13 +36,14 @@ class Game {
 			if (grid.open(row, col)) {
 				grid.display();
 				if (grid.getUnopenedCellsCount() == totalMineCount) {
-					System.out.println("Congratulations\n You Won");
-					System.exit(0);
+
+					allMinesIdentified = true;
+					// System.exit(0);
 				}
 			} else {
-				System.out
-						.println("Sorry..You stepped on a MineChecker...\nGame Over");
-				System.exit(0);
+
+				openedMine = true;
+				// System.exit(0);
 			}
 			// bomb.checkMine(row, col, cells);
 			/*
@@ -53,10 +56,26 @@ class Game {
 
 			// Board should not decide winning of Game. It should be in Game
 
-		} while (true);
+		} while (!allMinesIdentified && !openedMine);
+
+		decideGameStatus();
+
 	}
 
-	static int getUserVal(BufferedReader br) throws IOException {
+	public static void main(String arg[]) throws IOException {
+		new Game();
+	}
+
+	private void decideGameStatus() {
+		if (allMinesIdentified) {
+			System.out.println("Congratulations\n You Won");
+		} else if (openedMine) {
+			System.out
+					.println("Sorry..You stepped on a MineChecker...\nGame Over");
+		}
+	}
+
+	int getUserVal(BufferedReader br) throws IOException {
 		int value = 0;
 		while (true) {
 			try {
