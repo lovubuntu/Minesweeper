@@ -18,9 +18,6 @@ import static org.junit.Assert.*;
  */
 public class CellsTest {
 
-	public CellsTest() {
-	}
-
 	@BeforeClass
 	public static void setUpClass() throws Exception {
 	}
@@ -79,4 +76,13 @@ public class CellsTest {
 		assertEquals(mine_count + 1, instance.getCellAt(row, col).getValue());
 	}
 
+	@Test
+	public void testGetUnopenedCellsCount() {
+		Cells cells = new Cells();
+		assertEquals(100, cells.getUnopenedCellsCount());
+		cells.open(0, 0);
+		cells.open(1, 1);
+		cells.open(1, 2);
+		assertEquals(97, cells.getUnopenedCellsCount());
+	}
 }

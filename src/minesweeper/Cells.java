@@ -100,4 +100,22 @@ public class Cells {
 	public void open(int row, int col) {
 		cells[row][col].open();
 	}
+
+	public int getUnopenedCellsCount() {
+		int ucells_count = 0;
+		for (int row = 0; row < 10; row++) {
+			for (int col = 0; col < 10; col++) {
+				if (!cells[row][col].isOpened())
+					ucells_count++;
+			}
+		}
+		return ucells_count;
+		// this logic goes to Game
+		// if(ucells_count == 10)
+		// {
+		// System.out.println("Congratulations\n You Won");
+		// System.exit(0);
+		// }
+	}
+
 }

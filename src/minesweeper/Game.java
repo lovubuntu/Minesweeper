@@ -41,7 +41,7 @@ class Game {
 			board.display();
 
 			// Board should not decide winning of Game. It should be in Game
-			if (board.getUnopenedCellsCount() == totalMineCount) {
+			if (cells.getUnopenedCellsCount() == totalMineCount) {
 				System.out.println("Congratulations\n You Won");
 				System.exit(0);
 			}

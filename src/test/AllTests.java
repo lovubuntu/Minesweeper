@@ -5,8 +5,8 @@ import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
-@SuiteClasses({ BoardTest.class, CellsTest.class, ColElementsTest.class,
-		RowElementsTest.class, CellTest.class })
+@SuiteClasses({ CellsTest.class, ColElementsTest.class, RowElementsTest.class,
+		CellTest.class })
 public class AllTests {
 
 }

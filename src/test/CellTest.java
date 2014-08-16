@@ -35,5 +35,6 @@ public class CellTest {
 		Assert.assertEquals(true, cell.isOpened());
 
 	}
+	
 
 }

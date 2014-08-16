@@ -5,6 +5,7 @@ package minesweeper;
  * If opened it shows the number of  mine surrounded. Else it shows '?' character
  * A Cell is opened or not . It is a status of cell. So it should be in Cell
  * */
+
 public class Board {
 	private char[][] displayCells;
 
@@ -48,32 +49,8 @@ public class Board {
 		System.out.println();
 	}
 
-	public int getUnopenedCellsCount() {
-		int ucells_count = 0;
-		for (int i = 0; i < 10; i++) {
-			ucells_count = countUnopenedCols(i, ucells_count);
-		}
-		return ucells_count;
-		// this logic goes to Game
-		// if(ucells_count == 10)
-		// {
-		// System.out.println("Congratulations\n You Won");
-		// System.exit(0);
-		// }
-	}
+	// Getting unopened Cell count is job of Cells. bcoz now Cell is resp or its
+	// status. Cells only contains Cell.
+	// Board can not work on Cells member variable. So move this method to Cells
 
-	public int countUnopenedCols(int row, int ucells_count) {
-		for (int col = 0; col < 10; col++) {
-			ucells_count = checkUnopenedCell(row, col, ucells_count);
-		}
-		return ucells_count;
-	}
-
-	public int checkUnopenedCell(int row, int col, int ucells_count) {
-		char unopened = '?';
-		if (displayCells[row][col] == unopened) {
-			ucells_count++;
-		}
-		return ucells_count;
-	}
 }
