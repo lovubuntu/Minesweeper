@@ -10,15 +10,15 @@ class Game {
 
 		int row, col;
 		
-		Grid cells = new Grid(10);
+		Grid grid = new Grid(10);
 		// Board board = new Board();
 		// MineChecker bomb = new MineChecker(); // deleted the class
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-		cells.fillCells();
-		cells.test();
+		grid.fillCells();
+		grid.test();
 		// board.fillBoard();
-		cells.display();
+		grid.display();
 		do {
 			System.out.println("Enter the Row No:(From 0 to 9)");
 			row = getUserVal(br);
@@ -31,7 +31,7 @@ class Game {
 			// cells are a data of Grid class. it should not be accessed in
 			// MineChecker. Mine checker is not needed.
 
-			if (cells.hasMineAt(row, col)) {
+			if (grid.hasMineAt(row, col)) {
 				System.out
 						.println("Sorry..You stepped on a MineChecker...\nGame Over");
 				System.exit(0);
@@ -43,11 +43,11 @@ class Game {
 			 * 
 			 * This step makes the Board unused Class. remove Board
 			 */
-			cells.open(row, col);
-			cells.display();
+			grid.open(row, col);
+			grid.display();
 
 			// Board should not decide winning of Game. It should be in Game
-			if (cells.getUnopenedCellsCount() == totalMineCount) {
+			if (grid.getUnopenedCellsCount() == totalMineCount) {
 				System.out.println("Congratulations\n You Won");
 				System.exit(0);
 			}

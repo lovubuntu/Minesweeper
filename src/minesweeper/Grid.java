@@ -53,7 +53,7 @@ public class Grid {
 
 	public int checkMineIfNotPlaceOne(int row, int col, int total_mines) {
 		if (!cells[row][col].isMine()) {
-			cells[row][col].setValue(9);
+			cells[row][col].setValue(Cell.MINE_VALUE);
 			countAdjacentMines(row, col);
 			total_mines = total_mines - 1;
 		}

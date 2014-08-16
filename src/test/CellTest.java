@@ -22,7 +22,7 @@ public class CellTest {
 		Cell cell = new Cell();
 		cell.setValue(1);
 		Assert.assertEquals(false, cell.isMine());
-		cell.setValue(9);
+		cell.setValue(Cell.MINE_VALUE);
 		Assert.assertEquals(true, cell.isMine());
 
 	}
@@ -35,6 +35,5 @@ public class CellTest {
 		Assert.assertEquals(true, cell.isOpened());
 
 	}
-	
 
 }
