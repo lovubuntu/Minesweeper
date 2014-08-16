@@ -118,4 +118,14 @@ public class Cells {
 		// }
 	}
 
+	public void display() {
+		for (int row = 0; row < 10; row++) {
+			for (int col = 0; col < 10; col++) {
+				cells[row][col].display();
+			}
+			System.out.println();
+		}
+
+	}
+
 }

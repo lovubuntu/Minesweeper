@@ -17,7 +17,7 @@ class Game {
 		cells.fillCells();
 		cells.test();
 		board.fillBoard();
-		board.display();
+		cells.display();
 		do {
 			System.out.println("Enter the Row No:(From 0 to 9)");
 			row = getUserVal(br);
@@ -36,9 +36,9 @@ class Game {
 				System.exit(0);
 			}
 			// bomb.checkMine(row, col, cells);
-			
+
 			board.open(row, col, cells);
-			board.display();
+			cells.display();
 
 			// Board should not decide winning of Game. It should be in Game
 			if (cells.getUnopenedCellsCount() == totalMineCount) {

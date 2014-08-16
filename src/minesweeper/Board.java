@@ -6,6 +6,7 @@ package minesweeper;
  * A Cell is opened or not . It is a status of cell. So it should be in Cell
  * */
 
+
 public class Board {
 	private char[][] displayCells;
 
@@ -36,6 +37,7 @@ public class Board {
 		}
 	}
 
+	// Board should not display each cell. Cells can display its each cell.
 	public void display() {
 		for (int i = 0; i <= 9; i++) {
 			displayColumns(i);
