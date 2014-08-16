@@ -22,7 +22,7 @@ public class Board {
 	}
 
 	public void open(int row, int col, Cells cells) {
-		int cell_value = cells.getCellAt(row, col);
+		int cell_value = cells.getCellAt(row, col).getValue();
 		if (cell_value != 9) {
 			displayCells[row][col] = Character.forDigit(cell_value, 10);
 		}
