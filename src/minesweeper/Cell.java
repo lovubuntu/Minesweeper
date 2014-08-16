@@ -2,6 +2,7 @@ package minesweeper;
 
 public class Cell {
 	private int value;
+	private boolean opened;
 
 	public int getValue() {
 		return value;
@@ -13,5 +14,13 @@ public class Cell {
 
 	public boolean isMine() {
 		return value == 9;
+	}
+
+	public void open() {
+		opened = true;
+	}
+
+	public boolean isOpened() {
+		return opened;
 	}
 }

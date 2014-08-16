@@ -1,5 +1,10 @@
 package minesweeper;
 
+/*
+ * Board has the status of a Cell is opened or not.
+ * If opened it shows the number of  mine surrounded. Else it shows '?' character
+ * A Cell is opened or not . It is a status of cell. So it should be in Cell
+ * */
 public class Board {
 	private char[][] displayCells;
 
@@ -23,7 +28,9 @@ public class Board {
 
 	public void open(int row, int col, Cells cells) {
 		int cell_value = cells.getCellAt(row, col).getValue();
-		if (cell_value != 9) {
+		// change status of a cell while opening
+		cells.open(row, col);
+		if (!cells.hasMineAt(row, col)) {
 			displayCells[row][col] = Character.forDigit(cell_value, 10);
 		}
 	}

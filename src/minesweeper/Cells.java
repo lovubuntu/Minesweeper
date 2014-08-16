@@ -96,4 +96,8 @@ public class Cells {
 	public boolean hasMineAt(int row, int col) {
 		return cells[row][col].isMine();
 	}
+
+	public void open(int row, int col) {
+		cells[row][col].open();
+	}
 }

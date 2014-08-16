@@ -27,4 +27,13 @@ public class CellTest {
 
 	}
 
+	@Test
+	public void testIsOpened() {
+		Cell cell = new Cell();
+		Assert.assertEquals(false, cell.isOpened());
+		cell.open();
+		Assert.assertEquals(true, cell.isOpened());
+
+	}
+
 }

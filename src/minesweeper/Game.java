@@ -36,6 +36,7 @@ class Game {
 				System.exit(0);
 			}
 			// bomb.checkMine(row, col, cells);
+			
 			board.open(row, col, cells);
 			board.display();
 
