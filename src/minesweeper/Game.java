@@ -10,7 +10,7 @@ class Game {
 
 		int row, col;
 		
-		Cells cells = new Cells(10);
+		Grid cells = new Grid(10);
 		// Board board = new Board();
 		// MineChecker bomb = new MineChecker(); // deleted the class
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -28,7 +28,7 @@ class Game {
 			// checking a cell is mine or not Game resp. checking a cell is mine
 			// is a resp of Cell.
 			// and finding a cell using Row,Column is a resp of cells.
-			// cells are a data of Cells class. it should not be accessed in
+			// cells are a data of Grid class. it should not be accessed in
 			// MineChecker. Mine checker is not needed.
 
 			if (cells.hasMineAt(row, col)) {
@@ -38,7 +38,7 @@ class Game {
 			}
 			// bomb.checkMine(row, col, cells);
 			/*
-			 * Board opens a Cell in cells. for this Cells can access its
+			 * Board opens a Cell in cells. for this Grid can access its
 			 * members.
 			 * 
 			 * This step makes the Board unused Class. remove Board

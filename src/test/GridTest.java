@@ -5,7 +5,7 @@
 
 package test;
 
-import minesweeper.Cells;
+import minesweeper.Grid;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -16,7 +16,7 @@ import static org.junit.Assert.*;
  * 
  * @author Prabhu
  */
-public class CellsTest {
+public class GridTest {
 
 	@BeforeClass
 	public static void setUpClass() throws Exception {
@@ -27,11 +27,11 @@ public class CellsTest {
 	}
 
 	/**
-	 * Test of fill_Cells method, of class Cells.
+	 * Test of fill_Cells method, of class Grid.
 	 */
 	@Test
 	public void test_Fill_Cells_PopulatesMinesAndOtherCells() {
-		Cells instance = new Cells(10);
+		Grid instance = new Grid(10);
 		System.out.println("Checks whether total no. mines is 10");
 		assertEquals(10, instance.getTotalMinesCount());
 		System.out
@@ -41,7 +41,7 @@ public class CellsTest {
 	}
 
 	/**
-	 * Test of check_For_Mine method, of class Cells.
+	 * Test of check_For_Mine method, of class Grid.
 	 */
 	@Test
 	public void testCheck_Mine_If_Not_Place_One() {
@@ -50,7 +50,7 @@ public class CellsTest {
 		int col = 0;
 		int total_mines = 0;
 		int row_col;
-		Cells instance = new Cells(10);
+		Grid instance = new Grid(10);
 		while (total_mines > 0) {
 			row_col = (int) (Math.random() * 99);
 			row = (int) row_col / 10;
@@ -62,7 +62,7 @@ public class CellsTest {
 	}
 
 	/**
-	 * Test of set_Mine_Count method, of class Cells.
+	 * Test of set_Mine_Count method, of class Grid.
 	 */
 	@Test
 	public void test_Set_Mine_Count_IncrementsNeighbouringCellCountByOne() {
@@ -71,14 +71,14 @@ public class CellsTest {
 		int row = 0;
 		int col = 0;
 		int mine_count = 0;
-		Cells instance = new Cells(10);
+		Grid instance = new Grid(10);
 		instance.setMineCount(row, col);
 		assertEquals(mine_count + 1, instance.getCellAt(row, col).getValue());
 	}
 
 	@Test
 	public void testGetUnopenedCellsCount() {
-		Cells cells = new Cells(10);
+		Grid cells = new Grid(10);
 		assertEquals(100, cells.getUnopenedCellsCount());
 		cells.open(0, 0);
 		cells.open(1, 1);

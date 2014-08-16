@@ -1,15 +1,15 @@
 package minesweeper;
 
-//Cells is an collective class. But it stores collection of int not Cell or its kind. It is doing some aggregative functions 
+//Grid is an collective class. But it stores collection of int not Cell or its kind. It is doing some aggregative functions 
 //addition to that it does some singular work too . this shows more responsibility. So extracting those singular behaviour to 
 // new class called Cell.
 
-// Cells are checking the singular function whether a cell is mine or not. that can be inside the cell.
+// Grid are checking the singular function whether a cell is mine or not. that can be inside the cell.
 
 /*
  * Make replace all loop termination condition with getSize()
  * */
-public class Cells {
+public class Grid {
 	private int size;
 
 	private int getSize() {
@@ -18,11 +18,11 @@ public class Cells {
 
 	private Cell[][] cells;
 
-	// total Mine count decided by Game. So remove from Cells
+	// total Mine count decided by Game. So remove from Grid
 	private int totalMines = 10;
 
-	public Cells(int size) {
-		// first need to initialise all the Cell objects in Cells
+	public Grid(int size) {
+		// first need to initialise all the Cell objects in Grid
 		this.size = size;
 		totalMines = size;
 		initialiseCells();
@@ -86,7 +86,7 @@ public class Cells {
 	}
 
 	public Cell getCellAt(int row, int col) {
-		/* Returns the Cells Value */
+		/* Returns the Grid Value */
 		return cells[row][col];
 	}
 
