@@ -10,13 +10,13 @@ class Game {
 
 		int row, col;
 		Cells cells = new Cells();
-		Board board = new Board();
+		// Board board = new Board();
 		// MineChecker bomb = new MineChecker(); // deleted the class
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
 		cells.fillCells();
 		cells.test();
-		board.fillBoard();
+		// board.fillBoard();
 		cells.display();
 		do {
 			System.out.println("Enter the Row No:(From 0 to 9)");
@@ -36,8 +36,13 @@ class Game {
 				System.exit(0);
 			}
 			// bomb.checkMine(row, col, cells);
-
-			board.open(row, col, cells);
+			/*
+			 * Board opens a Cell in cells. for this Cells can access its
+			 * members.
+			 * 
+			 * This step makes the Board unused Class. remove Board
+			 */
+			cells.open(row, col);
 			cells.display();
 
 			// Board should not decide winning of Game. It should be in Game
