@@ -5,7 +5,7 @@
 
 package test;
 
-import minesweeper.ColumnProperties;
+import minesweeper.NeighbourColumnsCalculator;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -16,9 +16,9 @@ import static org.junit.Assert.*;
  * 
  * @author Prabhu
  */
-public class ColElementsTest {
+public class NeighbourColumnsCalculatorTest {
 
-	public ColElementsTest() {
+	public NeighbourColumnsCalculatorTest() {
 	}
 
 	@BeforeClass
@@ -30,13 +30,13 @@ public class ColElementsTest {
 	}
 
 	/**
-	 * Test of set_Cmin_Cmax method, of class ColumnProperties.
+	 * Test of set_Cmin_Cmax method, of class NeighbourColumnsCalculator.
 	 */
 	@Test
 	public void testSet_Cmin_Cmax() {
 		System.out.println("set_Cmin_Cmax");
 		int col = 0;
-		ColumnProperties instance = new ColumnProperties(10);
+		NeighbourColumnsCalculator instance = new NeighbourColumnsCalculator(10);
 		instance.setColumnMinAndMax(col);
 
 		System.out.println("Checks the Cols set for counting mines on 1st row");

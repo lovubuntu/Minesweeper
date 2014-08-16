@@ -5,7 +5,7 @@
 
 package test;
 
-import minesweeper.RowProperties;
+import minesweeper.NeighbourRowsCalculator;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -16,9 +16,9 @@ import static org.junit.Assert.*;
  * 
  * @author Prabhu
  */
-public class RowElementsTest {
+public class NeighbourRowsCalculatorTest {
 
-	public RowElementsTest() {
+	public NeighbourRowsCalculatorTest() {
 	}
 
 	@BeforeClass
@@ -30,13 +30,13 @@ public class RowElementsTest {
 	}
 
 	/**
-	 * Test of set_Rmin_Rmax method, of class RowProperties.
+	 * Test of set_Rmin_Rmax method, of class NeighbourRowsCalculator.
 	 */
 	@Test
 	public void testSet_Rmin_Rmax() {
 		System.out.println("sets Rmin Rmax");
 		int row = 0;
-		RowProperties instance = new RowProperties(3);
+		NeighbourRowsCalculator instance = new NeighbourRowsCalculator(3);
 
 		System.out.println("Checks the rows set for counting mines on 1st row");
 		instance.set_Rmin_Rmax(row);
