@@ -5,8 +5,18 @@ package minesweeper;
 // new class called Cell.
 
 // Cells are checking the singular function whether a cell is mine or not. that can be inside the cell.
+
+/*
+ * Make replace all loop termination condition with getSize()
+ * */
 public class Cells {
-	private Cell[][] cells = new Cell[10][10];
+	private int size = 3;
+
+	private int getSize() {
+		return size;
+	}
+
+	private Cell[][] cells = new Cell[getSize()][getSize()];
 
 	// total Mine count decided by Game. So remove from Cells
 	private int totalMines = 10;
@@ -20,16 +30,17 @@ public class Cells {
 		int rowCol, row, col;
 
 		while (totalMines > 0) {
-			rowCol = (int) (Math.random() * 99);
-			row = (int) rowCol / 10;
-			col = rowCol % 10;
+			int sizeSquare = getSize() * getSize();
+			rowCol = (int) (Math.random() * (sizeSquare - 1));
+			row = (int) rowCol / getSize();
+			col = rowCol % getSize();
 			totalMines = checkMineIfNotPlaceOne(row, col, totalMines);
 		}
 	}
 
 	private void initialiseCells() {
-		for (int row = 0; row < 10; row++) {
-			for (int column = 0; column < 10; column++) {
+		for (int row = 0; row < getSize(); row++) {
+			for (int column = 0; column < getSize(); column++) {
 				cells[row][column] = new Cell();
 			}
 
@@ -47,7 +58,7 @@ public class Cells {
 	}
 
 	public void countAdjacentMines(int row, int col) {
-		RowElements rowelt = new RowElements();
+		RowProperties rowelt = new RowProperties(getSize());
 		rowelt.set_Rmin_Rmax(row);
 		rowelt.check_First_Row(row);
 
@@ -59,7 +70,7 @@ public class Cells {
 	}
 
 	public void setLocalMinesCount(int row, int col) {
-		ColumnProperties colelt = new ColumnProperties();
+		ColumnProperties colelt = new ColumnProperties(getSize());
 		colelt.setColumnMinAndMax(col);
 		colelt.checkFirstColumn(col);
 		colelt.checkLastColumn(col);
@@ -86,9 +97,9 @@ public class Cells {
 	}
 
 	public void test() {
-		for (int row = 0; row < 10; row++) {
-			for (int column = 0; column < 10; column++)
-				System.out.print(cells[row][column].getValue() + " ");
+		for (int row = 0; row < getSize(); row++) {
+			for (int column = 0; column < getSize(); column++)
+				cells[row][column].display();
 			System.out.println();
 		}
 	}
@@ -103,8 +114,8 @@ public class Cells {
 
 	public int getUnopenedCellsCount() {
 		int ucells_count = 0;
-		for (int row = 0; row < 10; row++) {
-			for (int col = 0; col < 10; col++) {
+		for (int row = 0; row < getSize(); row++) {
+			for (int col = 0; col < getSize(); col++) {
 				if (!cells[row][col].isOpened())
 					ucells_count++;
 			}
@@ -119,8 +130,8 @@ public class Cells {
 	}
 
 	public void display() {
-		for (int row = 0; row < 10; row++) {
-			for (int col = 0; col < 10; col++) {
+		for (int row = 0; row < getSize(); row++) {
+			for (int col = 0; col < getSize(); col++) {
 				cells[row][col].display();
 			}
 			System.out.println();

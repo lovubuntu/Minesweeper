@@ -9,6 +9,7 @@ class Game {
 	public static void main(String arg[]) throws IOException {
 
 		int row, col;
+		
 		Cells cells = new Cells();
 		// Board board = new Board();
 		// MineChecker bomb = new MineChecker(); // deleted the class

@@ -36,19 +36,19 @@ public class ColElementsTest {
     public void testSet_Cmin_Cmax() {
         System.out.println("set_Cmin_Cmax");
         int col = 0;
-        ColumnProperties instance = new ColumnProperties();
+        ColumnProperties instance = new ColumnProperties(10);
         instance.setColumnMinAndMax(col);
 
         System.out.println("Checks the Cols set for counting mines on 1st row");
         instance.setColumnMinAndMax(col);
         assertEquals(0,instance.getColumnMin());
-        assertEquals(0,instance.getColumnMax());
+        assertEquals(1,instance.getColumnMax());
 
         System.out.println("Checks the Cols set for counting mines on 10th row");
         col = 9;
         instance.setColumnMinAndMax(col);
-        assertEquals(0,instance.getColumnMin());
-        assertEquals(0,instance.getColumnMax());
+        assertEquals(8,instance.getColumnMin());
+        assertEquals(9,instance.getColumnMax());
 
         System.out.println("Checks the Cols set for counting mines for 2-9 rows");
         for(col = 1;col < 9;col++)
@@ -67,7 +67,7 @@ public class ColElementsTest {
     public void testCheck_First_Col() {
         System.out.println("check_First_Col");
         int col = 0;
-        ColumnProperties instance = new ColumnProperties();
+        ColumnProperties instance = new ColumnProperties(10);
         instance.checkFirstColumn(col);
         assertEquals(0,instance.getColumnMin());
         assertEquals(1,instance.getColumnMax());
@@ -80,7 +80,7 @@ public class ColElementsTest {
     public void testCheck_Last_Col() {
         System.out.println("check_Last_Col");
         int col = 9;
-        ColumnProperties instance = new ColumnProperties();
+        ColumnProperties instance = new ColumnProperties(10);
         instance.checkLastColumn(col);
         assertEquals(8,instance.getColumnMin());
         assertEquals(9,instance.getColumnMax());
