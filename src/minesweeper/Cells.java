@@ -3,6 +3,8 @@ package minesweeper;
 //Cells is an collective class. But it stores collection of int not Cell or its kind. It is doing some aggregative functions 
 //addition to that it does some singular work too . this shows more responsibility. So extracting those singular behaviour to 
 // new class called Cell.
+
+// Cells are checking the singular function whether a cell is mine or not. that can be inside the cell.
 public class Cells {
 	private Cell[][] cells = new Cell[10][10];
 
@@ -36,7 +38,7 @@ public class Cells {
 	}
 
 	public int checkMineIfNotPlaceOne(int row, int col, int total_mines) {
-		if (cells[row][col].getValue() != 9) {
+		if (!cells[row][col].isMine()) {
 			cells[row][col].setValue(9);
 			countAdjacentMines(row, col);
 			total_mines = total_mines - 1;
@@ -69,7 +71,7 @@ public class Cells {
 
 	public void setMineCount(int row, int col) {
 		/* Increments Count if it is not MineChecker */
-		if (cells[row][col].getValue() != 9) {
+		if (!cells[row][col].isMine()) {
 			cells[row][col].setValue(cells[row][col].getValue() + 1);
 		}
 	}

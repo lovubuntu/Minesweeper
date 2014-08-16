@@ -10,5 +10,8 @@ public class Cell {
 	public void setValue(int value) {
 		this.value = value;
 	}
-	
+
+	public boolean isMine() {
+		return value == 9;
+	}
 }
