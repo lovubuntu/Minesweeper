@@ -21,7 +21,7 @@ public class Board {
 		}
 	}
 
-	public void assignValueOfCellAt(int row, int col, Cells cells) {
+	public void open(int row, int col, Cells cells) {
 		int cell_value = cells.getCellAt(row, col);
 		if (cell_value != 9) {
 			displayCells[row][col] = Character.forDigit(cell_value, 10);

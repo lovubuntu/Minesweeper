@@ -3,7 +3,7 @@ class MineChecker
 {
 private int mine = 9;
 
-public void check_Mine(int row,int col,Cells box)
+public void checkMine(int row,int col,Cells box)
 {
 	int chk_mine = box.getCellAt(row,col);
 	if(chk_mine == mine)

@@ -9,27 +9,27 @@ class Game {
 	public static void main(String arg[]) throws IOException {
 
 		int row, col;
-		Cells box = new Cells();
-		Board play = new Board();
+		Cells cells = new Cells();
+		Board board = new Board();
 		MineChecker bomb = new MineChecker();
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-		box.fillCells();
-		box.test();
-		play.fillBoard();
-		play.display();
+		cells.fillCells();
+		cells.test();
+		board.fillBoard();
+		board.display();
 		do {
 			System.out.println("Enter the Row No:(From 0 to 9)");
-			row = get_User_Val(br);
+			row = getUserVal(br);
 			System.out.println("Enter the Col No:(From 0 to 9)");
-			col = get_User_Val(br);
+			col = getUserVal(br);
 
-			bomb.check_Mine(row, col, box);
-			play.assignValueOfCellAt(row, col, box);
-			play.display();
+			bomb.checkMine(row, col, cells);
+			board.open(row, col, cells);
+			board.display();
 
 			// Board should not decide winning of Game. It should be in Game
-			if (play.getUnopenedCellsCount() == totalMineCount) {
+			if (board.getUnopenedCellsCount() == totalMineCount) {
 				System.out.println("Congratulations\n You Won");
 				System.exit(0);
 			}
@@ -37,7 +37,7 @@ class Game {
 		} while (true);
 	}
 
-	static int get_User_Val(BufferedReader br) throws IOException {
+	static int getUserVal(BufferedReader br) throws IOException {
 		int value = 0;
 		while (true) {
 			try {
