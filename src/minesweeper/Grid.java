@@ -1,14 +1,5 @@
 package minesweeper;
 
-//Grid is an collective class. But it stores collection of int not Cell or its kind. It is doing some aggregative functions 
-//addition to that it does some singular work too . this shows more responsibility. So extracting those singular behaviour to 
-// new class called Cell.
-
-// Grid are checking the singular function whether a cell is mine or not. that can be inside the cell.
-
-/*
- * Make replace all loop termination condition with getSize()
- * */
 public class Grid {
 	private int size;
 
@@ -18,11 +9,9 @@ public class Grid {
 
 	private Cell[][] cells;
 
-	// total Mine count decided by Game. So remove from Grid
 	private int totalMines = 10;
 
 	public Grid(int size, CellsValuePopulator cellsValuePopulator) {
-		// first need to initialise all the Cell objects in Grid
 		this.size = size;
 		totalMines = size;
 		initialiseCells();
@@ -41,7 +30,6 @@ public class Grid {
 	}
 
 	public Cell getCellAt(int row, int col) {
-		/* Returns the Grid Value */
 		return cells[row][col];
 	}
 
@@ -57,11 +45,6 @@ public class Grid {
 		return cells[row][col].isMine();
 	}
 
-	// open method can return something to Game whether it is opened cell is
-	// mine or not.
-	// from Game , open is not changing the status of its memeber variable. It
-	// is affecting
-	// the status of distant object(Cell) state
 	public boolean open(int row, int col) {
 		cells[row][col].open();
 		return !hasMineAt(row, col);
@@ -76,12 +59,6 @@ public class Grid {
 			}
 		}
 		return ucells_count;
-		// this logic goes to Game
-		// if(ucells_count == 10)
-		// {
-		// System.out.println("Congratulations\n You Won");
-		// System.exit(0);
-		// }
 	}
 
 	public void display() {
