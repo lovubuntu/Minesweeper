@@ -1,13 +1,17 @@
 package minesweeper;
 
 public class RandomGridFiller implements CellsValuePopulator {
-	private Cell[][] cells;
+	private Grid grid;
 	private int totalMines;
+	private NeighbourRowsCalculator rowelt;
+	private NeighbourColumnsCalculator colelt;
 
 	@Override
-	public void populate(Cell[][] cells, int minesToBePlaced) {
-		this.cells = cells;
-		this.totalMines = minesToBePlaced;
+	public void populate(Grid grid) {
+		this.grid = grid;
+		this.totalMines = grid.getTotalMinesCount();
+		rowelt = new NeighbourRowsCalculator(getSize());
+		colelt = new NeighbourColumnsCalculator(getSize());
 		fill();
 	}
 
@@ -20,26 +24,26 @@ public class RandomGridFiller implements CellsValuePopulator {
 			rowCol = (int) (Math.random() * (sizeSquare - 1));
 			row = (int) rowCol / getSize();
 			col = rowCol % getSize();
-			totalMines = checkMineIfNotPlaceOne(row, col, totalMines);
+			checkMineIfNotPlaceOne(row, col);
 		}
 	}
 
 	private int getSize() {
 		// TODO Auto-generated method stub
-		return cells.length;
+		return grid.getSize();
 	}
 
-	private int checkMineIfNotPlaceOne(int row, int col, int totalMinesCount) {
-		if (!cells[row][col].isMine()) {
-			cells[row][col].setNeighbourMinesCount(Cell.MINE_VALUE);
+	private void checkMineIfNotPlaceOne(int row, int col) {
+
+		if (!grid.getCellAt(row, col).isMine()) {
+			grid.getCellAt(row, col).setValue(Cell.MINE_VALUE);
 			countAdjacentMines(row, col);
-			totalMinesCount = totalMinesCount - 1;
+			totalMines--;
 		}
-		return totalMinesCount;
 	}
 
 	private void countAdjacentMines(int row, int col) {
-		NeighbourRowsCalculator rowelt = new NeighbourRowsCalculator(getSize());
+
 		rowelt.set_Rmin_Rmax(row);
 		/* Reaches the Row level for the generated MineChecker */
 		for (int i = rowelt.get_Rmin(); i <= rowelt.get_Rmax(); i++) {
@@ -48,7 +52,7 @@ public class RandomGridFiller implements CellsValuePopulator {
 	}
 
 	private void setLocalMinesCount(int row, int col) {
-		NeighbourColumnsCalculator colelt = new NeighbourColumnsCalculator(getSize());
+
 		colelt.setColumnMinAndMax(col);
 		/* Goes upto Column level for each row getting passed */
 		for (int j = colelt.getColumnMin(); j <= colelt.getColumnMax(); j++) {
@@ -58,9 +62,9 @@ public class RandomGridFiller implements CellsValuePopulator {
 
 	private void setMineCount(int row, int col) {
 		/* Increments Count if it is not MineChecker */
-		if (!cells[row][col].isMine()) {
-			cells[row][col]
-					.setNeighbourMinesCount(cells[row][col].getValue() + 1);
+		if (!grid.getCellAt(row, col).isMine()) {
+			grid.getCellAt(row, col).setValue(
+					grid.getCellAt(row, col).getValue() + 1);
 		}
 	}
 

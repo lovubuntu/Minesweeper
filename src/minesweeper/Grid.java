@@ -3,11 +3,12 @@ package minesweeper;
 public class Grid {
 	private int size;
 
-	private int getSize() {
+	public int getSize() {
 		return size;
 	}
 
 	private Cell[][] cells;
+	private int ucells_count;
 
 	private int totalMines = 10;
 
@@ -15,7 +16,8 @@ public class Grid {
 		this.size = size;
 		totalMines = size;
 		initialiseCells();
-		cellsValuePopulator.populate(cells, totalMines);
+		cellsValuePopulator.populate(this);
+		ucells_count = getSize() * getSize();
 	}
 
 	private void initialiseCells() {
@@ -33,31 +35,18 @@ public class Grid {
 		return cells[row][col];
 	}
 
-	public void test() {
-		for (int row = 0; row < getSize(); row++) {
-			for (int column = 0; column < getSize(); column++)
-				cells[row][column].display();
-			System.out.println();
-		}
-	}
-
 	private boolean hasMineAt(int row, int col) {
 		return cells[row][col].isMine();
 	}
 
 	public boolean open(int row, int col) {
 		cells[row][col].open();
+		ucells_count--;
 		return !hasMineAt(row, col);
 	}
 
 	public int getUnopenedCellsCount() {
-		int ucells_count = 0;
-		for (int row = 0; row < getSize(); row++) {
-			for (int col = 0; col < getSize(); col++) {
-				if (!cells[row][col].isOpened())
-					ucells_count++;
-			}
-		}
+
 		return ucells_count;
 	}
 
@@ -66,9 +55,14 @@ public class Grid {
 			for (int col = 0; col < getSize(); col++) {
 				cells[row][col].display();
 			}
-			System.out.println();
+			IOUtil.println("");
 		}
 
+	}
+
+	public int getTotalMinesCount() {
+		// TODO Auto-generated method stub
+		return totalMines;
 	}
 
 }

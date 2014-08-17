@@ -2,15 +2,17 @@ package minesweeper;
 
 import java.io.*;
 
-class Game {
-	private static final int totalMineCount = 10;
+class Minesweeper {
+	private int totalMineCount;
 	boolean allMinesIdentified = false;
 	boolean openedMine = false;
+	Grid grid;
 
-	public Game() throws IOException {
+	public Minesweeper(int lengthOfFieldSquareSide,
+			CellsValuePopulator cellsValuePopulator) throws IOException {
 		int row, col;
-
-		Grid grid = new Grid(10, new RandomGridFiller());
+		this.totalMineCount = lengthOfFieldSquareSide;
+		grid = new Grid(lengthOfFieldSquareSide, cellsValuePopulator);
 		grid.display();
 		do {
 			IOUtil.println("Enter the Row No:(From 0 to 9)");
@@ -19,7 +21,7 @@ class Game {
 			col = getUserVal();
 
 			if (grid.open(row, col)) {
-				grid.display();
+
 				if (grid.getUnopenedCellsCount() == totalMineCount) {
 
 					allMinesIdentified = true;
@@ -28,22 +30,25 @@ class Game {
 
 				openedMine = true;
 			}
-
+			grid.display();
 		} while (!allMinesIdentified && !openedMine);
 
 		decideGameStatus();
 
 	}
 
-	public static void main(String arg[]) throws IOException {
-		new Game();
+	public boolean open(int row, int col) {
+		return grid.open(row, col);
+	}
+
+	public void flag(int row, int col) {
 	}
 
 	private void decideGameStatus() {
 		if (allMinesIdentified) {
 			IOUtil.println("Congratulations\n You Won");
 		} else if (openedMine) {
-			IOUtil.println("Sorry..You stepped on a MineChecker...\nGame Over");
+			IOUtil.println("Sorry..You stepped on a Mine...\nGame Over");
 		}
 	}
 

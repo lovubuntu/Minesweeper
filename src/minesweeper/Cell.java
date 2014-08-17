@@ -5,14 +5,14 @@ package minesweeper;
  * */
 public class Cell {
 	private int value;
-	private boolean opened;
+	private CellStatus cellStatus = CellStatus.CLOSED;
 	public final static int MINE_VALUE = -1;
 
 	public int getValue() {
 		return value;
 	}
 
-	public void setNeighbourMinesCount(int value) {
+	public void setValue(int value) {
 		this.value = value;
 	}
 
@@ -21,17 +21,28 @@ public class Cell {
 	}
 
 	public void open() {
-		opened = true;
+		cellStatus = CellStatus.OPENED;
 	}
 
 	public boolean isOpened() {
-		return opened;
+		return cellStatus == CellStatus.OPENED;
+	}
+
+	public void flag() {
+		cellStatus = CellStatus.FLAGGED;
 	}
 
 	public void display() {
 		if (isOpened())
 			System.out.print(value);
+		else if (isFlagged())
+			System.out.print("F");
 		else
 			System.out.print("?");
+	}
+
+	private boolean isFlagged() {
+		// TODO Auto-generated method stub
+		return cellStatus == CellStatus.FLAGGED;
 	}
 }
