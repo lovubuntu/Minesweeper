@@ -9,7 +9,8 @@ public class Player {
 	 * @throws IOException
 	 */
 	public static void main(String[] args) throws IOException {
-		new Minesweeper(10, new RandomGridFiller());
+		new Minesweeper(10, new RandomGridFiller()).play();
+		
 	}
 
 }
