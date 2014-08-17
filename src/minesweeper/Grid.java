@@ -40,6 +40,7 @@ public class Grid {
 	}
 
 	public boolean open(int row, int col) {
+
 		cells[row][col].open();
 		ucells_count--;
 		return !hasMineAt(row, col);
@@ -61,8 +62,15 @@ public class Grid {
 	}
 
 	public int getTotalMinesCount() {
-		// TODO Auto-generated method stub
 		return totalMines;
+	}
+
+	public boolean isIdentifiedAllMines() {
+		return getUnopenedCellsCount() == getTotalMinesCount();
+	}
+
+	public void flag(int row, int col) {
+		getCellAt(row, col).flag();
 	}
 
 }

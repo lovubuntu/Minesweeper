@@ -3,7 +3,6 @@ package minesweeper;
 import java.io.*;
 
 class Minesweeper {
-	private int totalMineCount;
 	boolean allMinesIdentified = false;
 	boolean openedMine = false;
 	Grid grid;
@@ -11,7 +10,6 @@ class Minesweeper {
 	public Minesweeper(int lengthOfFieldSquareSide,
 			CellsValuePopulator cellsValuePopulator) throws IOException {
 		int row, col;
-		this.totalMineCount = lengthOfFieldSquareSide;
 		grid = new Grid(lengthOfFieldSquareSide, cellsValuePopulator);
 		grid.display();
 		do {
@@ -19,19 +17,9 @@ class Minesweeper {
 			row = getUserVal();
 			IOUtil.println("Enter the Col No:(From 0 to 9)");
 			col = getUserVal();
-
-			if (grid.open(row, col)) {
-
-				if (grid.getUnopenedCellsCount() == totalMineCount) {
-
-					allMinesIdentified = true;
-				}
-			} else {
-
-				openedMine = true;
-			}
+			openedMine = !open(row, col);
 			grid.display();
-		} while (!allMinesIdentified && !openedMine);
+		} while (!grid.isIdentifiedAllMines() && !openedMine);
 
 		decideGameStatus();
 
@@ -42,6 +30,7 @@ class Minesweeper {
 	}
 
 	public void flag(int row, int col) {
+		grid.flag(row, col);
 	}
 
 	private void decideGameStatus() {
